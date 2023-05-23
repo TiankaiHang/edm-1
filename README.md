@@ -154,6 +154,8 @@ Datasets are stored in the same format as in [StyleGAN](https://github.com/NVlab
 **CIFAR-10:** Download the [CIFAR-10 python version](https://www.cs.toronto.edu/~kriz/cifar.html) and convert to ZIP archive:
 
 ```.bash
+mkdir -p downloads/cifar10/
+wget https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz -O downloads/cifar10/cifar-10-python.tar.gz -O downloads/cifar10/cifar-10-python.tar.gz
 python dataset_tool.py --source=downloads/cifar10/cifar-10-python.tar.gz \
     --dest=datasets/cifar10-32x32.zip
 python fid.py ref --data=datasets/cifar10-32x32.zip --dest=fid-refs/cifar10-32x32.npz
