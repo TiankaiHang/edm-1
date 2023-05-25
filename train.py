@@ -47,6 +47,9 @@ def parse_int_list(s):
 @click.option('--arch',          help='Network architecture', metavar='ddpmpp|ncsnpp|adm',          type=click.Choice(['ddpmpp', 'ncsnpp', 'adm']), default='ddpmpp', show_default=True)
 @click.option('--precond',       help='Preconditioning & loss function', metavar='vp|ve|edm',       type=click.Choice(['vp', 've', 'edm']), default='edm', show_default=True)
 
+# EDMLossMinSNR
+@click.option('--min-snr',       help='min snr k loss weight', metavar='BOOL',                type=bool, default=False, show_default=True)
+
 # Hyperparameters.
 @click.option('--duration',      help='Training duration', metavar='MIMG',                          type=click.FloatRange(min=0, min_open=True), default=200, show_default=True)
 @click.option('--batch',         help='Total batch size', metavar='INT',                            type=click.IntRange(min=1), default=512, show_default=True)
@@ -133,7 +136,10 @@ def main(**kwargs):
     else:
         assert opts.precond == 'edm'
         c.network_kwargs.class_name = 'training.networks.EDMPrecond'
-        c.loss_kwargs.class_name = 'training.loss.EDMLoss'
+        if opts.min_snr:
+            c.loss_kwargs.class_name = 'training.loss.EDMLossMinSNR'
+        else:
+            c.loss_kwargs.class_name = 'training.loss.EDMLoss'
 
     # Network options.
     if opts.cbase is not None:
