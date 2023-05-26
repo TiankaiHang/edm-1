@@ -144,6 +144,7 @@ def main(**kwargs):
             c.loss_kwargs.class_name = 'training.loss.EDMLossMinSNR10'
         else:
             c.loss_kwargs.class_name = 'training.loss.EDMLoss'
+        dist.print0(f"************* loss: {c.loss_kwargs} *************")
 
     # Network options.
     if opts.cbase is not None:
