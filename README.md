@@ -3,7 +3,9 @@ torchrun  --standalone --nproc_per_node=8 train.py --outdir /mnt/external/exp/ic
 ```
 
 ```.bash
-torchrun  --standalone --nproc_per_node=8 train.py --outdir /mnt/external/exp/iccv2023_rebuttal/ --data /mnt/external/datasets/edm/imagenet-64x64.zip --cond=1 --arch=adm --duration=2500 --batch=128 --lr=1e-4 --ema=50 --dropout=0.10 --augment=0 --fp16=1 --ls=100 --tick=200 --loss-tye min-snr-1
+torchrun  --standalone --nproc_per_node=8 train.py --outdir /mnt/external/exp/iccv2023_rebuttal/ --data /mnt/external/datasets/edm/imagenet-64x64.zip --cond=1 --arch=adm --duration=2500 --batch=128 --lr=1e-4 --ema=50 --dropout=0.10 --augment=0 --fp16=1 --ls=100 --tick=200 --loss-type min-snr-1
+
+torchrun  --standalone --nproc_per_node=8 train.py --outdir /mnt/external/exp/iccv2023_rebuttal/ --data /mnt/external/datasets/edm/imagenet-64x64.zip --cond=1 --arch=adm --duration=2500 --batch=128 --lr=1e-4 --ema=50 --dropout=0.10 --augment=0 --fp16=1 --ls=100 --tick=200 --loss-type min-snr-10
 ```
 
 ## Elucidating the Design Space of Diffusion-Based Generative Models (EDM)<br><sub>Official PyTorch implementation of the NeurIPS 2022 paper</sub>
