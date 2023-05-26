@@ -48,7 +48,7 @@ def parse_int_list(s):
 @click.option('--precond',       help='Preconditioning & loss function', metavar='vp|ve|edm',       type=click.Choice(['vp', 've', 'edm']), default='edm', show_default=True)
 
 # EDMLossMinSNR
-@click.option('--min-snr',       help='min snr k loss weight', metavar='BOOL',                type=bool, default=False, show_default=True)
+@click.option('--loss-type',       help='min snr k loss weight', metavar='STR',                type=str, defult="min-snr-5")
 
 # Hyperparameters.
 @click.option('--duration',      help='Training duration', metavar='MIMG',                          type=click.FloatRange(min=0, min_open=True), default=200, show_default=True)
@@ -136,8 +136,12 @@ def main(**kwargs):
     else:
         assert opts.precond == 'edm'
         c.network_kwargs.class_name = 'training.networks.EDMPrecond'
-        if opts.min_snr:
+        if opts.loss_type == "min-snr-5":
             c.loss_kwargs.class_name = 'training.loss.EDMLossMinSNR'
+        elif opts.loss_type == "min-snr-1":
+            c.loss_kwargs.class_name = 'training.loss.EDMLossMinSNR1'
+        elif opts.loss_type == "min-snr-10":
+            c.loss_kwargs.class_name = 'training.loss.EDMLossMinSNR10'
         else:
             c.loss_kwargs.class_name = 'training.loss.EDMLoss'
 
