@@ -48,7 +48,7 @@ def parse_int_list(s):
 @click.option('--precond',       help='Preconditioning & loss function', metavar='vp|ve|edm',       type=click.Choice(['vp', 've', 'edm']), default='edm', show_default=True)
 
 # EDMLossMinSNR
-@click.option('--loss-type',       help='min snr k loss weight', metavar='STR',                type=str, defult="min-snr-5")
+@click.option('--loss-type',       help='min snr k loss weight', metavar='STR',                type=str, defult="constant")
 
 # Hyperparameters.
 @click.option('--duration',      help='Training duration', metavar='MIMG',                          type=click.FloatRange(min=0, min_open=True), default=200, show_default=True)
