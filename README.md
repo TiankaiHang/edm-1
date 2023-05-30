@@ -6,9 +6,9 @@ torchrun  --standalone --nproc_per_node=8 train.py --outdir /mnt/external/exp/ic
 git clone https://github.com/TiankaiHang/edm-1.git
 cd edm-1
 
-torchrun  --standalone --nproc_per_node=8 train.py --outdir /mnt/external/exp/iccv2023_rebuttal_minsnr_bs4096/ --data /mnt/external/datasets/edm/imagenet-64x64.zip --cond=1 --arch=adm --duration=2500 --batch=4096 --batch-gpu 32 --lr=1e-4 --ema=50 --dropout=0.10 --augment=0 --fp16=1 --ls=100 --tick=200 --loss-type min-snr-5
+torchrun  --standalone --nproc_per_node=8 train.py --outdir /mnt/external/exp/iccv2023_rebuttal_minsnr_bs4096/ --data /mnt/external/datasets/edm/imagenet-64x64.zip --cond=1 --arch=adm --duration=2500 --batch=4096 --batch-gpu 32 --lr=1e-4 --ema=50 --dropout=0.10 --augment=0 --fp16=1 --ls=100 --tick=200 --loss-type min-snr-5 --dump 500
 
-torchrun  --standalone --nproc_per_node=8 train.py --outdir /mnt/external/exp/iccv2023_rebuttal_edm_bs4096/ --data /mnt/external/datasets/edm/imagenet-64x64.zip --cond=1 --arch=adm --duration=2500 --batch=4096 --batch-gpu 32 --lr=1e-4 --ema=50 --dropout=0.10 --augment=0 --fp16=1 --ls=100 --tick=200 --loss-type ''
+torchrun  --standalone --nproc_per_node=8 train.py --outdir /mnt/external/exp/iccv2023_rebuttal_edm_bs4096/ --data /mnt/external/datasets/edm/imagenet-64x64.zip --cond=1 --arch=adm --duration=2500 --batch=4096 --batch-gpu 32 --lr=1e-4 --ema=50 --dropout=0.10 --augment=0 --fp16=1 --ls=100 --tick=200 --loss-type ''  --dump 500
 
 # -------------------
 
